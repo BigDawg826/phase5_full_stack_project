@@ -5,7 +5,7 @@ class BirdsController < ApplicationController
 
     def show
         bird = Bird.find(params[:id])
-        render json: bird, status::ok
+        render json: bird, status: :ok
     end
 
 end
