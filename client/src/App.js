@@ -11,7 +11,7 @@ function App() {
         <Link to="/hi">click for hi</Link>
         <br></br>
         <Link to="/bye">click for bye</Link>
-        <Link to="/form">click for form</Link>
+        <Link to="/birds/new">click for form</Link>
         <Switch>
           <Route path="/hi">
             <Hi/>
@@ -19,7 +19,7 @@ function App() {
           <Route path="/bye">
             <Bye/>
           </Route>
-          <Route path="/form">
+          <Route path="/birds/new">
             <Form/>
           </Route>
         </Switch>
