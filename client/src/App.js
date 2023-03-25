@@ -1,7 +1,7 @@
 import { Switch, Route, Link} from 'react-router-dom'
 import Bye from './components/Bye';
 import Hi from './components/Hi';
-
+import Form from './components/Form';
 
 function App() {
   return (
@@ -11,12 +11,16 @@ function App() {
         <Link to="/hi">click for hi</Link>
         <br></br>
         <Link to="/bye">click for bye</Link>
+        <Link to="/form">click for form</Link>
         <Switch>
           <Route path="/hi">
             <Hi/>
           </Route>
           <Route path="/bye">
             <Bye/>
+          </Route>
+          <Route path="/form">
+            <Form/>
           </Route>
         </Switch>
       </header>
