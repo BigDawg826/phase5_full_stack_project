@@ -1,27 +1,45 @@
 import { Switch, Route, Link} from 'react-router-dom'
-import Bye from './components/Bye';
-import Hi from './components/Hi';
+import AlbumContainer from './components/AlbumContainer';
+import Hi from './components/Home';
 import Form from './components/Form';
+import { useEffect, useState } from 'react';
+import AlbumDetails from './components/AlbumDetails';
+import Home from './components/Home';
 
 function App() {
+const [albums, setAlbums]= useState([])
+useEffect(()=> {
+  fetch("/albums") 
+  .then(resp => resp.json())
+  .then(setAlbums)
+}, [])
+//console.log(albums)
+  function handleAddAlbum(x){
+    setAlbums(prev => [...prev, x])
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Hello from my new project!</h1>
-        <Link to="/hi">click for hi</Link>
+        <Link to="/home">click for home</Link>
         <br></br>
-        <Link to="/bye">click for bye</Link>
-        <Link to="/birds/new">click for form</Link>
+        <Link to="/albums"><button>click for a list of artists</button></Link>
+        <Link to="/albums"><button>click for a list of albums</button></Link>
+        <Link to="/albums"><button>click for a list of songs</button></Link>
+        
         <Switch>
-          <Route path="/hi">
-            <Hi/>
+          <Route path="/home">
+            <Home/>
           </Route>
-          <Route path="/bye">
-            <Bye/>
+          <Route path="/albums/new">
+            <Form newAlbum={handleAddAlbum}/>
           </Route>
-          <Route path="/birds/new">
-            <Form/>
+          <Route path="/albums/:id">
+            <AlbumDetails albums={albums}/>
           </Route>
+          <Route path="/albums">
+            <AlbumContainer albums={albums}/>
+          </Route>
+          
         </Switch>
       </header>
     </div>
