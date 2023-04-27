@@ -1,13 +1,13 @@
-import React from 'react'
-
-function Home() {
-  return (
-    <div>
-      <h1>Hello from my new project!</h1>
-    <br></br>
-    <p>Welcome to my fan page for lovers of 'Ol Skool' R&B. Remember...</p>
-    </div>
-  )
+function Home({ user }) {
+  console.log(user)
+  if (user) {
+    return <h1>Welcome, {user.user_name}!</h1>;
+  } else {
+    return (<>
+    <h1>Please Login or Sign Up</h1>
+    <h3> additional text</h3>
+     </>);
+  }
 }
 
 export default Home

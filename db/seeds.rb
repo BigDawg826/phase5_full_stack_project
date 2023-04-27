@@ -29,3 +29,4 @@ Song.create!(title: 'Early In The Morning', album_id:gap_band_iv.id)
 Song.create!(title: 'You Dropped a Bomb on Me', album_id:gap_band_iv.id)
 Song.create!(title: 'Dirty Mind', album_id:dirty_mind.id)
 Song.create!(title: 'Party Up', album_id:dirty_mind.id)
+puts "Done seeding for today..."
