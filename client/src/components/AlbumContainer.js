@@ -3,7 +3,7 @@ import AlbumCard from './AlbumCard'
 import {Link} from "react-router-dom"
 
 function AlbumContainer({albums}) {
-  console.log(albums)
+  //console.log(albums)
   const eachAlbum = albums.map(a => <AlbumCard key={a.id} a={a}/>)
   return (
     <div>

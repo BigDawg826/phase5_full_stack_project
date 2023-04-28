@@ -17,10 +17,24 @@ useEffect(()=> {
   .then(resp => resp.json())
   .then(setAlbums)
 }, [])
-//console.log(albums)
+console.log(albums)
+
   function handleAddAlbum(x){
     setAlbums(prev => [...prev, x])
+}
 
+  function handleAlbumDelete(del){
+    setAlbums(prev => prev.filter(d => d.id !== del))
+  }
+
+  function handleAddAlbumComment(comment){
+    setAlbums(prev => prev.map(album =>{
+      if(album.id === comment.album_id) {
+        return {...album, user_comments: [...album.user_comments, comment]}
+      } else {
+        return album
+      }
+    }))
   }
 
     useEffect(() => {
@@ -31,6 +45,7 @@ useEffect(()=> {
         }
       });
     }, []);
+if (!albums.length) return <h1>Loading...</h1>
 
   return (
     <>
@@ -43,7 +58,7 @@ useEffect(()=> {
             <Home user={user}/>
           </Route>
           <br></br>
-          <Link to="/albums"><button>click for a list of artists</button></Link>
+          <Link to="/artists"><button>click for a list of artists</button></Link>
           <Link to="/albums"><button>click for a list of albums</button></Link>
           <Link to="/albums"><button>click for a list of songs</button></Link>
         <Switch>
@@ -51,7 +66,8 @@ useEffect(()=> {
             <Form newAlbum={handleAddAlbum}/>
           </Route>
           <Route path="/albums/:id">
-            <AlbumDetails albums={albums} user={user}/>
+            <AlbumDetails albums={albums} user={user} handleAlbumDelete={handleAlbumDelete}
+            handleAddAlbumComment={handleAddAlbumComment}/>
           </Route>
           <Route path="/albums">
             <AlbumContainer albums={albums}/>

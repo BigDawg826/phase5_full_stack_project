@@ -5,14 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-#User.destroy.all
-#Artist.destroy.all
-#Album.destroy.all
-#Song.destroy.all 
+
 
 
 User.create!(name: 'Lucius Foxx', user_name: 'WayneCEO', password: '1234', avatar:'', email:'fixxer@gmail.com', phone:123-456-7891)
-User.create!(name: 'Darian Fultz', user_name: 'bigdawg', password: '4321', avatar:'', email:'food4bd@gmail.com', phone:321-456-7891)
+User.create!(name: 'Darian Fultz', user_name: 'bigdawg', password: '4321', avatar:'', email:'food4bd@gmail.com', phone:321-456-7891, admin:true)
 rick_james = Artist.create!(name:'Rick James', image:'https://i.pinimg.com/236x/9f/19/5e/9f195ecfb88ce1f0d5c35fdf5d1a8a62--rick-james-james-darcy.jpg')
 gap_band = Artist.create!(name:'Gap Band', image:'https://observer.com/wp-content/uploads/sites/2/2021/11/GettyImages-74272379-e1636742245350.jpg?quality=80')
 michael_jackson = Artist.create!(name:'Michael Jackson', image:'https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/316135709_678375723653163_5496029500956802868_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=l9wjGLG6CJMAX-w0TY1&_nc_ht=scontent-mia3-1.xx&oh=00_AfBkE2DLablodWLECBHlKZp2ebWlxmjmzUiZYMS3bK4zdQ&oe=644CFCBF')

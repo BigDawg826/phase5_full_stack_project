@@ -9,7 +9,7 @@ class AlbumsController < ApplicationController
     #GET one album request
     def show
         album = Album.find(params[:id])
-        render json: album
+        render json: album, status: :ok
     end
 
     #CREATE album

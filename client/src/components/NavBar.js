@@ -17,17 +17,17 @@ function NavBar({ user, setUser}) {
       <div>
         <Link to="/">Home</Link>
       </div>
-      <div>
+      
         {user ? (
           <button onClick={handleLogoutClick}>Logout</button>
         ) : (
-          <>
+          <div className="signup">
             <Link to="/signup">Signup</Link>
-            <div></div>
+            
             <Link to="/login">Login</Link>
-          </>
+          </div>
         )}
-      </div>
+      
     </header>
   );
 }

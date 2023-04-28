@@ -11,7 +11,7 @@ function Form({newAlbum}) {
     release_year: "",
     title: ""
   })
-  console.log(formData)
+  //console.log(formData)
   // fetch all artists for dropdown
   useEffect(()=> {
     fetch("/artists") 
