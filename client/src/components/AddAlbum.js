@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 
-function Form({newAlbum}) {
-  const [artists, setArtist] = useState([])
+function AddAlbum({newAlbum, artists}) {
+  //const [artists, setArtist] = useState([])
   const [formData, setFormData] = useState({
     artist_id:"",
     image: "",
@@ -13,11 +13,11 @@ function Form({newAlbum}) {
   })
   //console.log(formData)
   // fetch all artists for dropdown
-  useEffect(()=> {
-    fetch("/artists") 
-    .then(resp => resp.json())
-    .then(setArtist)
-  }, [])
+ // useEffect(()=> {
+ //   fetch("/artists") 
+ //   .then(resp => resp.json())
+ //   .then(setArtist)
+  //}, [])
   //console.log(artists)
   const history = useHistory()
   function handleChange(e){
@@ -62,4 +62,4 @@ function Form({newAlbum}) {
   )
 }
 
-export default Form
+export default AddAlbum

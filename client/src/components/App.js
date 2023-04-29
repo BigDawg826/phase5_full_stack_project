@@ -1,16 +1,18 @@
 import { Switch, Route, Link} from 'react-router-dom'
 import AlbumContainer from './AlbumContainer';
 import Login from './Login';
-import Form from './Form';
+import AddAlbum from './AddAlbum';
 import React, { useEffect, useState } from 'react';
 import AlbumDetails from './AlbumDetails';
 import Home from './Home';
 import SignUp from './SignUp';
 import NavBar from './NavBar';
+import Artists from './Artists';
 
 function App() {
 const [albums, setAlbums]= useState([])
 const [user, setUser] = useState(null)
+const [artists, setArtist] = useState([])
 //NOTE: do a thing
 useEffect(()=> {
   fetch("/albums") 
@@ -18,6 +20,13 @@ useEffect(()=> {
   .then(setAlbums)
 }, [])
 console.log(albums)
+
+useEffect(()=> {
+  fetch("/artists") 
+  .then(resp => resp.json())
+  .then(setArtist)
+}, [])
+//console.log(artists)
 
   function handleAddAlbum(x){
     setAlbums(prev => [...prev, x])
@@ -60,10 +69,10 @@ if (!albums.length) return <h1>Loading...</h1>
           <br></br>
           <Link to="/artists"><button>click for a list of artists</button></Link>
           <Link to="/albums"><button>click for a list of albums</button></Link>
-          <Link to="/albums"><button>click for a list of songs</button></Link>
+          {/* <Link to="/albums"><button>click for a list of songs</button></Link> */}
         <Switch>
           <Route path="/albums/new">
-            <Form newAlbum={handleAddAlbum}/>
+            <AddAlbum newAlbum={handleAddAlbum} artists={artists}/>
           </Route>
           <Route path="/albums/:id">
             <AlbumDetails albums={albums} user={user} handleAlbumDelete={handleAlbumDelete}
@@ -71,6 +80,9 @@ if (!albums.length) return <h1>Loading...</h1>
           </Route>
           <Route path="/albums">
             <AlbumContainer albums={albums}/>
+          </Route>
+          <Route path="/artists">
+            <Artists artists={artists}/>
           </Route>
         </Switch>
         </>
